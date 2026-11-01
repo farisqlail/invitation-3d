@@ -1,0 +1,55 @@
+<svg width="560" height="260" viewBox="0 0 560 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600&amp;family=Jost:wght@400;600&amp;family=Noto+Sans+Javanese:wght@500;600&amp;display=swap');
+      .title-script {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-style: italic;
+        font-weight: 400;
+        fill: #E1FF00;
+      }
+      .sub-aksara {
+        font-family: 'Noto Sans Javanese', 'Javanese Text', serif;
+        font-weight: 500;
+        font-size: 16px;
+        fill: #E1FF00;
+        letter-spacing: 0.04em;
+      }
+      .sub-jawa {
+        font-family: 'Jost', sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        font-size: 13px;
+        fill: #E1FF00;
+      }
+      .badge-indo {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-style: italic;
+        font-size: 26px;
+        fill: #FFFFFF;
+        letter-spacing: 0.04em;
+      }
+      .sparkle {
+        fill: #E1FF00;
+      }
+    </style>
+  </defs>
+
+  <!-- Sparkle stars (4-point star ornaments matching Studio reference) -->
+  <path class="sparkle" d="M195 90 C195 99 203 103 212 103 C203 103 195 107 195 116 C195 107 187 103 178 103 C187 103 195 99 195 90 Z" />
+  <path class="sparkle" d="M375 145 C375 151 381 154 387 154 C381 154 375 157 375 163 C375 157 369 154 363 154 C369 154 375 151 375 145 Z" />
+  <path class="sparkle" d="M140 185 C140 189 144 191 148 191 C144 191 140 193 140 197 C140 193 136 191 132 191 C136 191 140 189 140 185 Z" />
+
+  <!-- Top label: Aksara Jawa (Pawartos Suci Palakrama) -->
+  <text x="280" y="44" text-anchor="middle" class="sub-aksara">ꦥꦮꦂꦠꦺꦴꦱ꧀ꦱꦸꦕꦶꦥꦭꦏꦿꦩ</text>
+  <line x1="80" y1="38" x2="160" y2="38" stroke="#E1FF00" stroke-width="1" stroke-opacity="0.6"/>
+  <line x1="400" y1="38" x2="480" y2="38" stroke="#E1FF00" stroke-width="1" stroke-opacity="0.6"/>
+
+  <!-- Main calligraphy: Faris & Vita -->
+  <text x="280" y="142" text-anchor="middle" class="title-script" font-size="108">Faris &amp; Vita</text>
+
+  <!-- Bottom lockup: Undangan Pernikahan -->
+  <text x="280" y="196" text-anchor="middle" class="badge-indo">Undangan Pernikahan</text>
+  <text x="280" y="232" text-anchor="middle" class="sub-jawa" font-size="11" fill="#FFFFFF" fill-opacity="0.9">10 JANUARI 2027 · SURABAYA</text>
+</svg>

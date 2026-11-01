@@ -1,40 +1,60 @@
-import { Cormorant_Garamond, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
+import { Cormorant_Garamond, Noto_Serif_JP, Jost } from 'next/font/google';
 
-const cormorantGaramond = Cormorant_Garamond({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['300', '400', '600'],
+  weight: ['300', '400', '500', '600'],
   style: ['normal', 'italic'],
-  variable: '--font-serif',
+  variable: '--font-cormorant',
   display: 'swap',
 });
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const notoSerifJP = Noto_Serif_JP({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
+  weight: ['200', '300', '400', '500'],
+  variable: '--font-mincho',
+  display: 'swap',
+});
+
+const jost = Jost({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700'],
   variable: '--font-sans',
   display: 'swap',
 });
 
 export const metadata = {
-  title: 'Faris & Vita — The Wedding Walkthrough',
-  description: 'Undangan Pernikahan 3D Garden Walkthrough Faris & Vita',
+  title: 'Faris & Vita — Undangan Pernikahan | 10 Januari 2027',
+  description:
+    'Dengan penuh rasa syukur, kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara akad nikah dan resepsi pernikahan Faris Rizqilail & Ardina Vita Rika Pratiwi pada hari Minggu, 10 Januari 2027 di Bangsal Pancasila UWKS Surabaya.',
 };
 
 export const viewport = {
   width: 'device-width',
-  initialScale: 1.0,
-  maximumScale: 5.0,
-  viewportFit: 'cover',
-  themeColor: '#2c499c',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#E1FF00',
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className={`${cormorantGaramond.variable} ${plusJakartaSans.variable}`}>
-      <body className="bg-[#243b82] text-white font-sans antialiased selection:bg-[#ffe2a8] selection:text-[#213c8b]">
-        {children}
-      </body>
+    <html
+      lang="id"
+      className={`${cormorant.variable} ${notoSerifJP.variable} ${jost.variable}`}
+    >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+Javanese:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
