@@ -1,0 +1,333 @@
+:root {
+  --sky-deep: #243b82;
+  --gold-primary: #ffe2a8;
+  --white-pure: #ffffff;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--sky-deep);
+  color: var(--white-pure);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background: var(--sky-deep);
+}
+
+body.is-locked {
+  overflow: hidden;
+  height: 100dvh;
+}
+
+/* =========================================
+   1. FIXED 3D CANVAS & ATMOS VIGNETTE
+   ========================================= */
+#webgl-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 1;
+  display: block;
+  pointer-events: none;
+}
+
+.atmosphere-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 45%, transparent 60%, rgba(14, 24, 52, 0.22) 100%),
+    linear-gradient(180deg, rgba(14, 26, 58, 0.25) 0%, transparent 15%, transparent 85%, rgba(14, 24, 48, 0.35) 100%);
+}
+
+/* =========================================
+   2. ATMOS MINIMAL TOP HEADER
+   ========================================= */
+.atmos-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 45;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  pointer-events: none;
+}
+
+.header-left,
+.header-center,
+.header-right {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  justify-content: flex-start;
+}
+
+.header-center {
+  justify-content: center;
+}
+
+.header-right {
+  justify-content: flex-end;
+}
+
+.atmos-logo {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 3.5vw, 1.55rem);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  color: var(--white-pure);
+  text-decoration: none;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  user-select: none;
+}
+
+.atmos-logo span {
+  font-style: italic;
+  color: var(--gold-primary);
+}
+
+.atmos-eq-btn {
+  background: transparent;
+  border: none;
+  color: var(--white-pure);
+  padding: 0.4rem 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.88;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.atmos-eq-btn:hover {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+.eq-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 14px;
+}
+
+.eq-bars span {
+  width: 1.5px;
+  height: 3px;
+  background: var(--white-pure);
+  border-radius: 2px;
+  transition: height 0.2s ease;
+}
+
+.eq-bars.is-playing span:nth-child(1) { animation: eqBounce 0.7s ease-in-out infinite; }
+.eq-bars.is-playing span:nth-child(2) { animation: eqBounce 0.5s ease-in-out 0.15s infinite; }
+.eq-bars.is-playing span:nth-child(3) { animation: eqBounce 0.85s ease-in-out 0.25s infinite; }
+.eq-bars.is-playing span:nth-child(4) { animation: eqBounce 0.6s ease-in-out 0.1s infinite; }
+.eq-bars.is-playing span:nth-child(5) { animation: eqBounce 0.75s ease-in-out 0.2s infinite; }
+.eq-bars.is-playing span:nth-child(6) { animation: eqBounce 0.55s ease-in-out 0.05s infinite; }
+.eq-bars.is-playing span:nth-child(7) { animation: eqBounce 0.65s ease-in-out 0.3s infinite; }
+
+@keyframes eqBounce {
+  0%, 100% { height: 3px; opacity: 0.5; }
+  50% { height: 14px; opacity: 1; }
+}
+
+/* =========================================
+   3. ATMOS COVER SCREEN
+   ========================================= */
+.cover-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, rgba(22, 48, 138, 0.72) 0%, rgba(78, 108, 198, 0.62) 55%, rgba(220, 228, 250, 0.52) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), visibility 1s;
+}
+
+.cover-gate.is-opened {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.atmos-cover-inner {
+  text-align: center;
+  max-width: 680px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.atmos-title-wrap {
+  position: relative;
+  display: inline-block;
+  padding: 1.5rem 2.2rem 0.5rem;
+}
+
+.atmos-hero-title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(2.8rem, 11vw, 5.8rem);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: var(--white-pure);
+  text-shadow: 0 8px 32px rgba(18, 35, 90, 0.35);
+}
+
+.atmos-hero-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-primary);
+}
+
+.atmos-rotating-badge {
+  position: absolute;
+  top: -12px;
+  right: -14px;
+  width: 96px;
+  height: 96px;
+  color: rgba(255, 255, 255, 0.9);
+  animation: spinSlow 18s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.atmos-subtitle {
+  font-size: 0.92rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 0.35rem;
+  margin-bottom: 1.8rem;
+}
+
+.atmos-guest-pill {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(12px);
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  margin-bottom: 2rem;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.guest-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.guest-name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--white-pure);
+}
+
+.atmos-explore-btn {
+  background: var(--white-pure);
+  color: #213c8b;
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 2.4rem;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  box-shadow: 0 12px 34px rgba(17, 32, 82, 0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.atmos-explore-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(17, 32, 82, 0.38);
+}
+
+.cover-hint {
+  margin-top: 1.2rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* =========================================
+   4. ATMOS SCROLL PROMPT
+   ========================================= */
+.scroll-prompt {
+  position: fixed;
+  top: 26%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  text-align: center;
+}
+
+.scroll-prompt.is-visible {
+  opacity: 1;
+}
+
+.scroll-prompt span {
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--white-pure);
+  text-shadow: 0 2px 14px rgba(15, 28, 68, 0.55);
+}
+
+/* =========================================
+   5. PURE SCROLL CONTAINER (850vh)
+   ========================================= */
+.scroll-track {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 850vh;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .atmos-header {
+    padding: 1.6rem 2.8rem;
+  }
+}
