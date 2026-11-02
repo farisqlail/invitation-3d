@@ -1,14 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Javanese:wght@400;500;600;700&display=swap');
 
 :root {
-  --s-color-lime: #E1FF00;
-  --s-color-olive: #BCD500;
-  --s-color-olive-dark: #899C00;
-  --s-color-dark: #1A1A1A;
-  --s-color-charcoal: #333333;
-  --s-color-muted: #666666;
-  --s-color-white: #FFFFFF;
-  --s-color-border: #EEEEEE;
+  /* ========================================================
+     MOODBOARD PALETTE RESEPSI NIKAH
+     ======================================================== */
+  /* 1. Warna Dasar & Dominan (Terang & Luas) */
+  --s-color-ivory: #FDFBF7;       /* Putih Gading - Panel Pelaminan & Bunga */
+  --s-color-cream: #F4EFE6;       /* Krem Lembut - Dinding & Tirai */
+  --s-color-beige: #E5DEC9;       /* Krem Hangat - Taplak Meja & Kursi */
+
+  /* 2. Warna Kontras & Aksen Mewah (Pengantin & Detail Gold) */
+  --s-color-maroon: #58111A;      /* Marun Tua - Jas & Gaun Pengantin */
+  --s-color-burgundy: #3D0C11;    /* Merah Anggur Gelap - Efek Beludru/Payet */
+  --s-color-gold: #D4AF37;        /* Emas Lembut - Lis Pelaminan & Gunungan */
+  --s-color-gold-soft: #C5B358;   /* Emas Muda - Aksen Meja & Cutlery */
+
+  /* 3. Warna Alam & Tradisional (Sentuhan Outdoor & Jawa) */
+  --s-color-sage: #8F9E8B;        /* Hijau Sage - Daun Eucalyptus & Ruscus */
+  --s-color-forest: #3A5335;      /* Hijau Daun Tua - Daun Monstera/Semak */
+  --s-color-teak: #9C7A54;        /* Cokelat Kayu Jati - Ukiran & Gunungan */
+
+  /* Semantic UI mappings */
+  --s-color-lime: var(--s-color-cream);
+  --s-color-olive: var(--s-color-gold);
+  --s-color-olive-dark: var(--s-color-gold-soft);
+  --s-color-dark: var(--s-color-burgundy);
+  --s-color-charcoal: var(--s-color-maroon);
+  --s-color-muted: var(--s-color-teak);
+  --s-color-white: var(--s-color-ivory);
+  --s-color-border: var(--s-color-beige);
   --s-color-danger: #f23a3c;
 
   --s-font-serif: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
@@ -147,6 +167,7 @@ svg {
 .s-splash__logo {
   width: 300px;
   height: auto;
+  overflow: visible;
   animation: splashPulse 1.4s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
 }
 
@@ -178,21 +199,24 @@ svg {
   gap: 8px;
   padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(26, 26, 26, 0.82);
+  background: rgba(61, 12, 17, 0.88);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(225, 255, 0, 0.35);
-  color: var(--s-color-lime);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  color: var(--s-color-gold);
   font-family: var(--s-font-sans);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: transform 250ms ease, background 250ms ease;
+  box-shadow: 0 4px 18px rgba(61, 12, 17, 0.28);
+  transition: transform 250ms ease, background 250ms ease, border-color 250ms ease;
 }
 
 .s-audio-btn:hover {
   transform: translateY(-2px);
-  background: rgba(26, 26, 26, 0.95);
+  background: var(--s-color-maroon);
+  border-color: var(--s-color-gold);
+  color: var(--s-color-ivory);
 }
 
 .s-audio-bars {
@@ -204,7 +228,7 @@ svg {
 
 .s-audio-bars span {
   width: 2px;
-  background: var(--s-color-lime);
+  background: var(--s-color-gold);
   border-radius: 1px;
   height: 3px;
   transition: height 200ms ease;
@@ -247,7 +271,7 @@ svg {
   align-items: center;
   justify-content: center;
   z-index: 0;
-  background: #1A1A1A;
+  background: var(--s-color-burgundy);
 }
 
 .s-fv-slides {
@@ -287,9 +311,9 @@ svg {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.12) 0%,
-    rgba(0, 0, 0, 0.04) 55%,
-    rgba(0, 0, 0, 0.36) 100%
+    rgba(61, 12, 17, 0.28) 0%,
+    rgba(0, 0, 0, 0.08) 45%,
+    rgba(61, 12, 17, 0.62) 100%
   );
   pointer-events: none;
 }
@@ -320,7 +344,8 @@ svg {
   width: 70%;
   max-width: 960px;
   height: auto;
-  filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.14));
+  overflow: visible;
+  filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.22));
 }
 
 .s-fv-caption-row {
@@ -337,24 +362,31 @@ svg {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--s-color-lime);
-  color: var(--s-color-dark);
-  padding: 4px 12px;
+  background: var(--s-color-forest);
+  color: var(--s-color-ivory);
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  padding: 6px 14px;
+  border-radius: 999px;
   font-family: var(--s-font-sans);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.06em;
   pointer-events: auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.s-fv-guest-pill .s-aksara {
+  color: var(--s-color-gold);
 }
 
 .s-fv-caption {
-  color: var(--s-color-white);
+  color: var(--s-color-ivory);
   font-family: var(--s-font-sans);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.45;
   max-width: 880px;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
 }
 
 /* Desktop Floating Special Thanks Card inside FV */
@@ -363,20 +395,24 @@ svg {
   right: 0;
   bottom: 180px;
   width: 200px;
-  background: var(--s-color-lime);
-  padding: 8px;
+  background: var(--s-color-maroon);
+  border: 1px solid var(--s-color-gold);
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 28px;
   z-index: 5;
   pointer-events: auto;
   cursor: pointer;
+  box-shadow: 0 12px 32px rgba(61, 12, 17, 0.35);
   transition: transform 500ms cubic-bezier(0.39, 0.575, 0.565, 1), box-shadow 500ms ease;
 }
 
 .s-fv-card-desktop:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(61, 12, 17, 0.5);
 }
 
 .s-fv-card-top {
@@ -390,11 +426,12 @@ svg {
   width: 100%;
   height: 123px;
   object-fit: cover;
-  background: #FFFFFF;
+  background: var(--s-color-burgundy);
+  border-radius: 2px;
 }
 
 .s-fv-card-title {
-  color: var(--s-color-dark);
+  color: var(--s-color-gold);
   font-family: var(--s-font-serif);
   font-size: 32px;
   font-weight: 400;
@@ -412,7 +449,7 @@ svg {
 }
 
 .s-fv-card-sub {
-  color: var(--s-color-dark);
+  color: var(--s-color-ivory);
   font-family: var(--s-font-mincho);
   font-size: 15px;
   line-height: 1.3;
@@ -424,6 +461,7 @@ svg {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  color: var(--s-color-gold);
 }
 
 /* Tablet / Mobile Special Thanks Banner above Section 1 */
@@ -440,12 +478,15 @@ svg {
 .s-fv-card-mobile {
   position: relative;
   overflow: hidden;
-  background: var(--s-color-lime);
+  background: var(--s-color-maroon);
+  border: 1px solid var(--s-color-gold);
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   padding: 12px 12px 16px 12px;
   width: 70%;
+  box-shadow: 0 10px 28px rgba(61, 12, 17, 0.35);
 }
 
 .s-fv-card-mobile__orbit {
@@ -469,7 +510,7 @@ svg {
 }
 
 /* ==========================================
-   SECTION 1: ACID LIME (#E1FF00) GREETING + SIDE COLLAGE + PROFILES
+   SECTION 1: SOFT CREAM (#F4EFE6) GREETING + SIDE COLLAGE + PROFILES
    ========================================== */
 .s-lime-section {
   position: relative;
@@ -549,7 +590,7 @@ svg {
   position: absolute;
   right: -20px;
   top: -40px;
-  color: rgba(51, 51, 51, 0.08);
+  color: rgba(212, 175, 55, 0.16);
   font-family: var(--s-font-aksara);
   font-size: 140px;
   font-weight: 400;
@@ -583,7 +624,7 @@ svg {
   letter-spacing: 0.02em;
   width: 100%;
   padding-left: 20px;
-  border-left: 2px solid rgba(26, 26, 26, 0.28);
+  border-left: 2px solid var(--s-color-gold);
   word-break: break-word;
   overflow-wrap: break-word;
 }
@@ -782,7 +823,7 @@ svg {
 }
 
 .s-schedule-label-en {
-  color: var(--s-color-muted);
+  color: var(--s-color-gold);
   font-family: var(--s-font-serif);
   font-size: 48px;
   font-weight: 300;
@@ -790,7 +831,7 @@ svg {
 }
 
 .s-schedule-label-sub {
-  color: var(--s-color-muted);
+  color: var(--s-color-gold-soft);
   font-family: var(--s-font-aksara);
   font-size: 20px;
   font-weight: 400;
@@ -815,7 +856,7 @@ svg {
 }
 
 .s-schedule-note {
-  color: var(--s-color-white);
+  color: var(--s-color-border);
   font-family: var(--s-font-mincho);
   font-size: 16px;
   line-height: 1.6;
@@ -873,7 +914,7 @@ svg {
 }
 
 .s-place-title-link:hover {
-  color: var(--s-color-lime);
+  color: var(--s-color-gold);
   transform: translateY(-5px);
 }
 
@@ -893,7 +934,7 @@ svg {
 }
 
 .s-place-address {
-  color: var(--s-color-white);
+  color: var(--s-color-border);
   font-family: var(--s-font-mincho);
   font-size: 18px;
   line-height: 1.4;
@@ -910,7 +951,7 @@ svg {
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  color: var(--s-color-white);
+  color: var(--s-color-gold);
   font-family: var(--s-font-mincho);
   font-size: 24px;
   line-height: 1;
@@ -918,7 +959,7 @@ svg {
 }
 
 .s-place-map-link:hover {
-  color: var(--s-color-lime);
+  color: var(--s-color-white);
   transform: translateY(-5px);
 }
 
@@ -940,7 +981,7 @@ svg {
 }
 
 /* ==========================================
-   SECTION 4: ACID LIME (#E1FF00) RSVP + SPECIAL THANKS + FOOTER
+   SECTION 4: SOFT CREAM (#F4EFE6) SPECIAL THANKS + FOOTER
    ========================================== */
 .s-bottom-lime-section {
   position: relative;
@@ -1085,7 +1126,7 @@ svg {
 }
 
 .s-archive-hero__title {
-  color: var(--s-color-lime);
+  color: var(--s-color-gold);
   font-family: var(--s-font-serif);
   font-size: 44px;
   font-weight: 400;
@@ -1161,7 +1202,7 @@ svg {
   font-family: var(--s-font-aksara);
   font-size: 26px;
   font-weight: 400;
-  color: var(--s-color-lime);
+  color: var(--s-color-gold);
   margin-top: 8px;
   letter-spacing: 0.04em;
 }
@@ -1174,7 +1215,7 @@ svg {
   letter-spacing: 0.02em;
   color: var(--s-color-charcoal);
   padding-left: 16px;
-  border-left: 2px solid rgba(26, 26, 26, 0.25);
+  border-left: 2px solid var(--s-color-gold);
   word-break: break-word;
   overflow-wrap: break-word;
 }
@@ -1193,7 +1234,7 @@ svg {
   position: relative;
   z-index: 1;
   width: 100%;
-  background: linear-gradient(0deg, #1A1A1A 60%, rgba(26, 26, 26, 0) 100%);
+  background: linear-gradient(0deg, #3D0C11 60%, rgba(61, 12, 17, 0) 100%);
   padding: 360px 40px 200px 40px;
   display: flex;
   flex-direction: column;
@@ -1223,7 +1264,7 @@ svg {
   position: relative;
   z-index: 2;
   width: 100%;
-  background: #1A1A1A;
+  background: #3D0C11;
   padding: 96px 40px 64px 40px;
   display: flex;
   flex-direction: column;
@@ -1504,7 +1545,9 @@ svg {
   .s-place-map-link {
     font-size: 15px;
     padding: 12px 22px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    color: var(--s-color-gold);
     border-radius: 999px;
     display: inline-flex;
     align-items: center;
@@ -1548,8 +1591,11 @@ svg {
     gap: 14px;
     font-size: 16px;
     padding: 14px 20px;
-    background: rgba(255, 255, 255, 0.45);
+    background: var(--s-color-maroon);
+    border: 1px solid var(--s-color-gold);
+    color: var(--s-color-ivory);
     border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(88, 17, 26, 0.25);
   }
   .s-thanks-badge { width: 52px; }
 

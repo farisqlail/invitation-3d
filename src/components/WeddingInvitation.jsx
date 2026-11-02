@@ -134,7 +134,7 @@ export default function WeddingInvitation() {
         <span>{isPlayingAudio ? 'Musik Aktif' : 'Musik Hening'}</span>
       </button>
 
-      {/* 1. LAYAR PEMBUKA SPLASH (#E1FF00 + logo-dark.svg) */}
+      {/* 1. LAYAR PEMBUKA SPLASH (Soft Cream #F4EFE6 + logo-dark.svg) */}
       <div className={`s-splash ${splashDone ? 'is-hidden' : ''}`} aria-hidden={splashDone}>
         <img
           src="/assets/logo-dark.svg"
@@ -251,7 +251,7 @@ export default function WeddingInvitation() {
         </Link>
       </div>
 
-      {/* 3. SECTION 1: ACID LIME (#E1FF00) SALAM MENYAMPING + KOLASE FOTO + PROFIL */}
+      {/* 3. SECTION 1: SOFT CREAM (#F4EFE6) SALAM MENYAMPING + KOLASE FOTO + PROFIL */}
       <section className="s-lime-section">
         {/* Tata Letak Menyamping: Teks di Kiri (Sticky), Foto Berjalan di Kanan (Tidak Tertutup) */}
         <div className="s-greeting-parallax-wrap">
@@ -538,7 +538,7 @@ export default function WeddingInvitation() {
       {/* 5. SECTION 3: JENDELA TRANSPARAN 100VH (Menyingkap Kembali Carousel di Bawah) */}
       <div className="s-transparent-window" aria-hidden="true" />
 
-      {/* 6. SECTION 4: ACID LIME (#E1FF00) MATUR NUWUN SANGET */}
+      {/* 6. SECTION 4: SOFT CREAM (#F4EFE6) MATUR NUWUN SANGET */}
       <section className="s-bottom-lime-section">
         {/* Blok Rasa Syukur & Terima Kasih (Matur Nuwun Sanget) */}
         <div className="s-thanks-block">

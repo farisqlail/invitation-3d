@@ -268,7 +268,7 @@ export default function ArchivePage() {
               <Link
                 href="/"
                 className="s-archive-back"
-                style={{ color: '#E1FF00', display: 'inline-block', marginBottom: '24px' }}
+                style={{ color: '#D4AF37', display: 'inline-block', marginBottom: '24px' }}
               >
                 (← Kembali ke Halaman Utama)
               </Link>

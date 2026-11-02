@@ -3,12 +3,12 @@
   <defs>
     <style>
       .cls-1 {
-        fill: #bcd500;
+        fill: #D4AF37;
       }
 
       .cls-2 {
         fill: none;
-        stroke: #bcd500;
+        stroke: #D4AF37;
       }
     </style>
   </defs>
