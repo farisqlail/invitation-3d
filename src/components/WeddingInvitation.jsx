@@ -12,28 +12,22 @@ const HERO_SLIDES = [
 const MAPS_URL =
   'https://www.google.com/maps/search/?api=1&query=Bangsal+Pancasila+UWKS+Jl.+Dukuh+Kupang+XXV+No.54+Surabaya';
 
-export default function WeddingInvitation() {
+export default function WeddingInvitation({ guest = null }) {
   const [splashDone, setSplashDone] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
-  const [guestName, setGuestName] = useState('');
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+
+  const guestName = guest?.nama || '';
+  const archiveHref = guest?.slug ? `/archive?u=${encodeURIComponent(guest.slug)}` : '/archive';
 
   const audioRef = useRef(null);
   const touchStartXRef = useRef(0);
 
-  // Splash timer & URL guest param
+  // Splash timer
   useEffect(() => {
     const timer = setTimeout(() => {
       setSplashDone(true);
     }, 1350);
-
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      const toParam = params.get('to') || params.get('kepada') || '';
-      if (toParam.trim()) {
-        setGuestName(toParam.trim());
-      }
-    }
 
     return () => clearTimeout(timer);
   }, []);
@@ -141,6 +135,11 @@ export default function WeddingInvitation() {
           alt="Pawarto Palakrama Faris & Vita"
           className="s-splash__logo"
         />
+        {guestName && (
+          <div className="s-splash__guest">
+            <strong className="s-splash__guest-name">{guestName}</strong>
+          </div>
+        )}
       </div>
 
       {/* 2. STICKY FULLSCREEN HERO CAROUSEL (FVカルーセル) */}
@@ -176,11 +175,8 @@ export default function WeddingInvitation() {
 
           <div className="s-fv-caption-row">
             {guestName && (
-              <div className="s-fv-guest-pill">
-                <span>
-                  <span className="s-aksara" style={{ marginRight: '6px' }}>ꦏꦠꦸꦂ ꦥꦚ꧀ꦗꦼꦤꦼꦔꦤꦶꦥꦸꦤ꧀:</span>
-                  {guestName}
-                </span>
+              <div className="s-fv-guest-pill" aria-label={guestName}>
+                <strong className="s-fv-guest-name">{guestName}</strong>
               </div>
             )}
             <p className="s-fv-caption">
@@ -195,7 +191,7 @@ export default function WeddingInvitation() {
           </div>
 
           {/* Kartu Melayang Desktop Menuju Arsip Kenangan */}
-          <Link href="/archive" className="s-fv-card-desktop">
+          <Link href={archiveHref} className="s-fv-card-desktop">
             <div className="s-fv-card-top">
               <img
                 src="/assets/photos/special-thumb.png"
@@ -224,7 +220,7 @@ export default function WeddingInvitation() {
 
       {/* Spanduk Khusus Tablet & Ponsel */}
       <div className="s-fv-card-mobile-wrap">
-        <Link href="/archive" className="s-fv-card-mobile">
+        <Link href={archiveHref} className="s-fv-card-mobile">
           <img
             src="/assets/wakusei-sm.svg"
             alt=""
@@ -264,6 +260,12 @@ export default function WeddingInvitation() {
             />
 
             <div className="s-greeting-inner">
+              {guestName && (
+                <div className="s-greeting-guest s-reveal">
+                  <strong className="s-greeting-guest__name">{guestName}</strong>
+                </div>
+              )}
+
               <div className="s-greeting-top-row s-reveal">
                 <p className="s-greeting-id-text">
                   Bismillahirrohmanirrohim.
@@ -571,7 +573,7 @@ export default function WeddingInvitation() {
               loading="lazy"
             />
 
-            <Link href="/archive" className="s-thanks-link s-reveal">
+            <Link href={archiveHref} className="s-thanks-link s-reveal">
               <span>Buka Arsip Kenangan &amp; Cerita Kami</span>
               <img
                 src="/assets/archive-badge.png"

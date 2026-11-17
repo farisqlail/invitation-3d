@@ -1,5 +1,6 @@
 import './globals.css';
 import { Cormorant_Garamond, Noto_Serif_JP, Jost } from 'next/font/google';
+import { getSiteUrl } from '@/lib/guests';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -24,9 +25,23 @@ const jost = Jost({
 });
 
 export const metadata = {
+  metadataBase: getSiteUrl(),
   title: 'Faris & Vita — Undangan Pernikahan | 10 Januari 2027',
   description:
     'Dengan penuh rasa syukur, kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara akad nikah dan resepsi pernikahan Faris Rizqilail & Ardina Vita Rika Pratiwi pada hari Minggu, 10 Januari 2027 di Bangsal Pancasila UWKS Surabaya.',
+  openGraph: {
+    title: 'Faris & Vita — Undangan Pernikahan | 10 Januari 2027',
+    description:
+      'Dengan penuh rasa syukur, kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara akad nikah dan resepsi pernikahan Faris Rizqilail & Ardina Vita Rika Pratiwi — Minggu, 10 Januari 2027 di Bangsal Pancasila UWKS Surabaya.',
+    type: 'website',
+    locale: 'id_ID',
+    images: [
+      {
+        url: '/assets/photos/hero-1.png',
+        alt: 'Undangan Pernikahan Faris & Vita',
+      },
+    ],
+  },
 };
 
 export const viewport = {
